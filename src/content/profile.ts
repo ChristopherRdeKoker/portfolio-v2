@@ -33,7 +33,7 @@ export const intro =
   "I build and maintain a production SaaS platform in TypeScript, React/Next.js and PostgreSQL. I like owning features end to end, from the database to the UI, and I have a strong eye for security and business-logic edge cases.";
 
 export const about = [
-  "I have almost 4 years of experience on a production SaaS platform at Owlbox Platforms, working day to day in TypeScript, React/Next.js and PostgreSQL. I often own features end to end, from database changes to the UI, and I enjoy finding and fixing the real-life bugs that only show up in production-ready apps.",
+  "I have almost 4 years of experience on an enterprise-sized production SaaS platform, working day to day in TypeScript, React/Next.js and PostgreSQL. I often own features end to end, from database changes to the UI, and I enjoy finding and fixing the real-life bugs that only show up in production-ready apps.",
   "I came to software from psychology and teaching, so I build with the people using it in mind and can explain technical ideas clearly to non-technical colleagues. Outside work I build family-based apps and self-host them on my own Linux server with Docker.",
 ];
 
@@ -47,7 +47,8 @@ export const stats: Stat[] = [
 export const achievements: Achievement[] = [
   {
     title: "Production authentication with Auth.js",
-    detail: "Personally implemented production-ready authentication for the Owlbox platform.",
+    detail:
+      "Personally implemented production-ready authentication for an enterprise-sized company app.",
   },
   {
     title: "TanStack Router + tRPC → Next.js migration",
@@ -101,7 +102,7 @@ export const timeline: TimelineEntry[] = [
     kind: "work",
     period: "Feb 2023 – Present",
     title: "Intermediate Full-Stack Software Developer",
-    organisation: "Owlbox Platforms (Pty) Ltd",
+    organisation: "Enterprise-sized SaaS company",
     summary:
       "Build and maintain an enterprise-sized, multi-tenant HR and training SaaS platform: authentication, multi-step registration with email verification, type-safe server actions, database migrations and file-storage integrations.",
   },
