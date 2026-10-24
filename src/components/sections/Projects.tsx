@@ -92,6 +92,19 @@ export function Projects() {
             </a>
           </li>
         ))}
+        <li className="group border-line hover:border-accent rounded-2xl border border-dashed transition">
+          <a
+            href={person.githubUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="focus-visible:outline-accent flex h-full min-h-56 flex-col items-center justify-center gap-3 p-6 text-center focus-visible:outline-2"
+          >
+            <GithubIcon className="text-ink-muted group-hover:text-accent size-10 transition" />
+            <span className="font-semibold">See more on GitHub</span>
+            <span className="text-ink-muted text-sm">{person.githubHandle}</span>
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
+        </li>
       </ul>
     </Section>
   );
