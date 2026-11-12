@@ -464,6 +464,7 @@ tbody th {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
 
@@ -542,6 +543,14 @@ tbody th {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  background: var(--good-soft);
+}
+
+.deposits-head .disclosure {
+  flex: 1;
 }
 
 .disclosure {
