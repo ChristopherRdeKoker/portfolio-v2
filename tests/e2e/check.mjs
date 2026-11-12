@@ -238,7 +238,13 @@ async function checkApps(context, label) {
     let status = 0;
     let isRendered = false;
     if (cardCount === 1) {
-      const [response] = await Promise.all([page.waitForNavigation(), card.first().click()]);
+      const isAppDocument = (candidate) =>
+        candidate.request().resourceType() === "document" &&
+        new URL(candidate.url()).pathname === app.href;
+      const [response] = await Promise.all([
+        page.waitForResponse(isAppDocument),
+        card.first().click(),
+      ]);
       status = response?.status() ?? 0;
       isRendered = await page
         .getByText(app.renderedText)
