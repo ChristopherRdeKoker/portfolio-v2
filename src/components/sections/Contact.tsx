@@ -20,9 +20,13 @@ const contactLinkClasses = cn(
   focusRingClasses,
 );
 
-const email: ContactItemType = { icon: Mail, label: "Email", value: person.email };
-const github: ContactItemType = { icon: GithubIcon, label: "GitHub", value: person.githubHandle };
-const location: ContactItemType = { icon: MapPin, label: "Location", value: person.location };
+const emailItem: ContactItemType = { icon: Mail, label: "Email", value: person.email };
+const githubItem: ContactItemType = {
+  icon: GithubIcon,
+  label: "GitHub",
+  value: person.githubHandle,
+};
+const locationItem: ContactItemType = { icon: MapPin, label: "Location", value: person.location };
 
 function ContactCardBody({ icon: Icon, label, value }: ContactItemType) {
   return (
@@ -44,17 +48,17 @@ export function Contact() {
       <ul className="mx-auto grid max-w-4xl gap-4 lg:grid-cols-3">
         <li className="min-w-0">
           <a href={`mailto:${person.email}`} className={contactLinkClasses}>
-            <ContactCardBody {...email} />
+            <ContactCardBody {...emailItem} />
           </a>
         </li>
         <li className="min-w-0">
           <ExternalLink href={person.githubUrl} className={contactLinkClasses}>
-            <ContactCardBody {...github} />
+            <ContactCardBody {...githubItem} />
           </ExternalLink>
         </li>
         <li className="min-w-0">
           <div className={contactCardClasses}>
-            <ContactCardBody {...location} />
+            <ContactCardBody {...locationItem} />
           </div>
         </li>
       </ul>

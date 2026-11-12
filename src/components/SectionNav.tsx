@@ -31,6 +31,7 @@ export function SectionNav() {
         {navItems.map(({ id, label }) => {
           const Icon = navIcons[id];
           const isActive = activeSectionId === id;
+
           return (
             <li key={id}>
               <a
