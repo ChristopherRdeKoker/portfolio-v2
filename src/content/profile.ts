@@ -164,6 +164,14 @@ export const projects: Project[] = [
     href: "/apps/retirement/",
     stack: ["Rust", "WebAssembly", "Leptos", "SVG chart", "localStorage", "Unit-tested maths"],
   },
+  {
+    name: "Expense tracker",
+    description:
+      "Track spending per month against a budget for each category, with a breakdown chart, search and CSV or JSON export. Everything stays in your browser.",
+    image: "/images/projects/expense-tracker.webp",
+    href: "/apps/expenses/",
+    stack: ["C#", ".NET 10", "Blazor WebAssembly", "SVG chart", "localStorage", "xUnit"],
+  },
 ];
 
 export const navItems = [

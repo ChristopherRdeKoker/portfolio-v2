@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#101317" media="(prefers-color-scheme: dark)" />
+    <meta name="description" content="A fast, private monthly expense tracker with budgets per category. Built with C# and Blazor WebAssembly; data stays in your browser." />
+    <title>Expenses · Budget tracker</title>
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link href="_framework/dotnet.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-6F/tr3Yj8uunEplHzRCSBYjW7tnRDvqnRvH6R5gOisg=" />
+    <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+    <div id="app">
+        <div class="boot" role="status">
+            <svg class="loading-progress" viewBox="0 0 100 100" aria-hidden="true">
+                <circle r="40" cx="50" cy="50" />
+                <circle r="40" cx="50" cy="50" />
+            </svg>
+            <span class="loading-progress-text"></span>
+            <noscript><p class="boot-noscript">This app needs JavaScript and WebAssembly.</p></noscript>
+        </div>
+    </div>
+
+    <div id="blazor-error-ui" role="alert">
+        Something went wrong.
+        <a href="" class="reload">Reload</a>
+        <button type="button" class="dismiss" aria-label="Dismiss">×</button>
+    </div>
+    <script src="_framework/blazor.webassembly.w3qd1tpl0e.js"></script>
+</body>
+</html>
