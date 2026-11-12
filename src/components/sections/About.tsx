@@ -18,7 +18,7 @@ export function About() {
           {stats.map((stat) => (
             <div key={stat.label} className={cn(cardClasses, "flex min-w-0 flex-col p-5")}>
               <dt className="text-ink-muted text-sm break-words">{stat.label}</dt>
-              <dd className="text-accent order-first text-3xl font-bold break-words md:text-4xl">
+              <dd className="text-brand order-first text-3xl font-bold break-words md:text-4xl">
                 {stat.value}
               </dd>
             </div>

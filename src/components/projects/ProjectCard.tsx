@@ -15,7 +15,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <li
       className={cn(
         cardClasses,
-        "group hover:border-accent flex min-w-0 flex-col overflow-hidden transition",
+        "group hover:border-brand flex min-w-0 flex-col overflow-hidden transition",
       )}
     >
       <a href={project.href} className={cn("flex h-full flex-col", focusRingClasses)}>

@@ -10,7 +10,7 @@ const timelineIcons: Record<TimelineKindEnum, LucideIcon> = {
 export function Experience() {
   return (
     <Section id="experience" title="My" highlight="timeline" backdrop="experience" isTinted>
-      <ol className="border-line relative mx-auto max-w-3xl border-l-2 pl-8">
+      <ol className="border-edge relative mx-auto max-w-3xl border-l-2 pl-8">
         {timeline.map((timelineEntry) => {
           const Icon = timelineIcons[timelineEntry.kind];
 
@@ -19,14 +19,14 @@ export function Experience() {
               key={`${timelineEntry.period}-${timelineEntry.title}`}
               className="relative pb-10 last:pb-0"
             >
-              <span className="bg-accent absolute top-0 -left-[3.05rem] grid size-10 place-items-center rounded-full text-white shadow">
+              <span className="bg-brand absolute top-0 -left-[3.05rem] grid size-10 place-items-center rounded-full text-white shadow">
                 <Icon className="size-5" aria-hidden />
               </span>
-              <p className="bg-accent-soft inline-block max-w-full rounded-full px-3 py-0.5 text-xs font-medium break-words">
+              <p className="bg-brand-soft inline-block max-w-full rounded-full px-3 py-0.5 text-xs font-medium break-words">
                 {timelineEntry.period}
               </p>
               <h3 className="mt-2 text-lg font-semibold break-words">{timelineEntry.title}</h3>
-              <p className="text-accent text-sm font-medium break-words">
+              <p className="text-brand text-sm font-medium break-words">
                 {timelineEntry.organisation}
               </p>
               <p className="text-ink-muted mt-2 leading-relaxed break-words">

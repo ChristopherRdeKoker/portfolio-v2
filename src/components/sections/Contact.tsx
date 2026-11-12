@@ -16,7 +16,7 @@ type ContactItemType = {
 const contactCardClasses = cn(cardClasses, "block h-full p-6 text-center");
 const contactLinkClasses = cn(
   contactCardClasses,
-  "hover:border-accent transition",
+  "hover:border-brand transition",
   focusRingClasses,
 );
 
@@ -27,7 +27,7 @@ const location: ContactItemType = { icon: MapPin, label: "Location", value: pers
 function ContactCardBody({ icon: Icon, label, value }: ContactItemType) {
   return (
     <>
-      <Icon className="text-accent mx-auto size-7" />
+      <Icon className="text-brand mx-auto size-7" />
       <p className="text-ink-muted mt-3 text-sm break-words">{label}</p>
       <p className="mt-1 text-sm font-medium [overflow-wrap:anywhere]">{value}</p>
     </>

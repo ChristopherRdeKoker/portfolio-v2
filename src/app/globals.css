@@ -12,9 +12,9 @@
   --surface-raised: #ffffff;
   --ink: #1d2430;
   --ink-muted: #586473;
-  --line: #d9e0e7;
-  --accent: #1a7a42;
-  --accent-soft: #d3eadc;
+  --edge: #d9e0e7;
+  --brand: #1a7a42;
+  --brand-soft: #d3eadc;
   --band: #e8edf2;
 }
 
@@ -23,9 +23,9 @@
   --surface-raised: #222838;
   --ink: #eef1f5;
   --ink-muted: #a3afbd;
-  --line: #333b4e;
-  --accent: #2fbf6b;
-  --accent-soft: #1d3a2d;
+  --edge: #333b4e;
+  --brand: #2fbf6b;
+  --brand-soft: #1d3a2d;
   --band: #1f2435;
 }
 
@@ -34,9 +34,9 @@
   --color-surface-raised: var(--surface-raised);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
-  --color-line: var(--line);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
+  --color-edge: var(--edge);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
   --color-band: var(--band);
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }

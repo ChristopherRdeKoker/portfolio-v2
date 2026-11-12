@@ -22,10 +22,10 @@ export function SectionNav() {
   return (
     <nav
       aria-label="Sections"
-      className="border-line bg-surface-raised/95 fixed inset-x-0 bottom-0 z-40 border-t backdrop-blur md:inset-x-auto md:top-1/2 md:right-4 md:bottom-auto md:-translate-y-1/2 md:rounded-full md:border md:p-2"
+      className="border-edge bg-surface-raised/95 fixed inset-x-0 bottom-0 z-40 border-t backdrop-blur md:inset-x-auto md:top-1/2 md:right-4 md:bottom-auto md:-translate-y-1/2 md:rounded-full md:border md:p-2"
     >
       <ul className="flex justify-around md:flex-col md:gap-2">
-        <li className="border-line md:border-b md:pb-2">
+        <li className="border-edge md:border-b md:pb-2">
           <ThemeToggle />
         </li>
         {navItems.map(({ id, label }) => {
@@ -41,7 +41,7 @@ export function SectionNav() {
                 className={cn(
                   "grid size-12 place-items-center rounded-full transition",
                   focusRingClasses,
-                  isActive ? "bg-accent text-white" : "text-ink-muted hover:text-accent",
+                  isActive ? "bg-brand text-white" : "text-ink-muted hover:text-brand",
                 )}
               >
                 <Icon className="size-5" aria-hidden />

@@ -9,7 +9,7 @@ export function SiteFooter() {
     <footer
       className={cn(
         pageContainerClasses,
-        "border-line text-ink-muted border-t py-8 text-center text-sm",
+        "border-edge text-ink-muted border-t py-8 text-center text-sm",
       )}
     >
       © {year} {person.name} · Built with Next.js, TypeScript and Tailwind CSS

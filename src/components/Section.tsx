@@ -19,7 +19,7 @@ export function Section({ id, title, highlight, backdrop, isTinted, children }: 
     <section
       id={id}
       aria-labelledby={headingId}
-      className={cn("py-20 md:py-28", isTinted && "border-line/60 bg-band border-y")}
+      className={cn("py-20 md:py-28", isTinted && "border-edge/60 bg-band border-y")}
     >
       <div className={pageContainerClasses}>
         <div className="relative mb-12 overflow-hidden py-4 text-center">
@@ -30,7 +30,7 @@ export function Section({ id, title, highlight, backdrop, isTinted, children }: 
             {backdrop}
           </p>
           <h2 id={headingId} className="relative text-3xl font-bold break-words md:text-4xl">
-            {title} <span className="text-accent">{highlight}</span>
+            {title} <span className="text-brand">{highlight}</span>
           </h2>
         </div>
         {children}

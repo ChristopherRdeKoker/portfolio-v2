@@ -9,9 +9,9 @@ export enum LinkButtonVariantEnum {
 }
 
 const variantClasses: Record<LinkButtonVariantEnum, string> = {
-  [LinkButtonVariantEnum.Primary]: "bg-accent text-white shadow hover:brightness-110",
+  [LinkButtonVariantEnum.Primary]: "bg-brand text-white shadow hover:brightness-110",
   [LinkButtonVariantEnum.Secondary]:
-    "border border-line bg-surface-raised hover:border-accent hover:text-accent",
+    "border border-edge bg-surface-raised hover:border-brand hover:text-brand",
 };
 
 type LinkButtonProps = ComponentProps<"a"> & {

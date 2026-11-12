@@ -32,7 +32,7 @@ export function ThemeToggle() {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Light mode" : "Dark mode"}
       className={cn(
-        "text-ink-muted hover:text-accent grid size-12 place-items-center rounded-full transition",
+        "text-ink-muted hover:text-brand grid size-12 place-items-center rounded-full transition",
         focusRingClasses,
       )}
     >

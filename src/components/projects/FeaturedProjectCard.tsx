@@ -20,7 +20,7 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         imageClassName="object-left-top"
       />
       <div className="min-w-0 p-6 md:p-8">
-        <p className="text-accent text-sm font-semibold tracking-wide break-words uppercase">
+        <p className="text-brand text-sm font-semibold tracking-wide break-words uppercase">
           Latest project
         </p>
         <h3 className="mt-1 text-2xl font-semibold break-words">{project.name}</h3>

@@ -16,7 +16,7 @@ export function Hero() {
       )}
     >
       <div className="relative mx-auto w-56 sm:w-64 md:w-full md:max-w-sm">
-        <div aria-hidden className="bg-accent/80 absolute -inset-3 -z-10 rotate-3 rounded-3xl" />
+        <div aria-hidden className="bg-brand/80 absolute -inset-3 -z-10 rotate-3 rounded-3xl" />
         <Image
           src={person.photo}
           alt={`Portrait of ${person.name}`}
@@ -28,7 +28,7 @@ export function Hero() {
       </div>
 
       <div className="min-w-0 text-center md:text-left">
-        <p className="text-accent mb-2 font-medium tracking-wide">Hi, I&apos;m</p>
+        <p className="text-brand mb-2 font-medium tracking-wide">Hi, I&apos;m</p>
         <h1 className="text-4xl font-bold text-balance break-words sm:text-5xl lg:text-6xl">
           {person.name}
         </h1>
@@ -60,7 +60,7 @@ export function Hero() {
 
       <a
         href="#about"
-        className="text-ink-muted hover:text-accent absolute inset-x-0 bottom-6 mx-auto hidden w-fit flex-col items-center gap-1 text-sm transition md:flex"
+        className="text-ink-muted hover:text-brand absolute inset-x-0 bottom-6 mx-auto hidden w-fit flex-col items-center gap-1 text-sm transition md:flex"
       >
         <p>Scroll down or use the shortcuts on the right</p>
         <ChevronDown className="size-5 motion-safe:animate-bounce" aria-hidden />

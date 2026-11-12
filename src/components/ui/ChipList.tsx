@@ -28,7 +28,7 @@ export function ChipList({ items, size, label, className }: ChipListProps) {
       {items.map((item) => (
         <li
           key={item}
-          className={cn("bg-accent-soft min-w-0 rounded-full break-words", chipClasses[size])}
+          className={cn("bg-brand-soft min-w-0 rounded-full break-words", chipClasses[size])}
         >
           {item}
         </li>

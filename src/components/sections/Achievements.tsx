@@ -11,9 +11,9 @@ export function Achievements() {
         {achievements.map((achievement) => (
           <li
             key={achievement.title}
-            className={cn(cardClasses, "hover:border-accent flex min-w-0 gap-4 p-5 transition")}
+            className={cn(cardClasses, "hover:border-brand flex min-w-0 gap-4 p-5 transition")}
           >
-            <CheckCircle2 className="text-accent mt-0.5 size-6 shrink-0" aria-hidden />
+            <CheckCircle2 className="text-brand mt-0.5 size-6 shrink-0" aria-hidden />
             <div className="min-w-0">
               <h3 className="font-semibold break-words">{achievement.title}</h3>
               <p className="text-ink-muted mt-1 text-sm leading-relaxed break-words">
