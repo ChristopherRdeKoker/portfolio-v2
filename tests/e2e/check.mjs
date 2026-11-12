@@ -64,6 +64,7 @@ const LONG_TEXT_SLOTS = [
   "#experience h3",
   "#projects h3",
   "#projects h4",
+  "#projects h4 > span",
   "#projects p",
   "#projects li li",
   "#contact > div > p",
@@ -299,14 +300,25 @@ async function checkLongText(browser, viewport, label) {
     ({ slots, word }) => {
       const matches = new Set(slots.flatMap((slot) => [...document.querySelectorAll(slot)]));
       const elements = [...matches].filter((element) => !element.closest("[aria-hidden]"));
+      const findings = [];
+      const injected = [];
       for (const element of elements) {
         const textNode = [...element.childNodes].find(
           (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
         );
-        if (textNode) textNode.textContent = `${word} ${word} and a long multi word string`;
+        const hasSlotInside = elements.some(
+          (other) => other !== element && element.contains(other),
+        );
+        if (textNode) {
+          textNode.textContent = `${word} ${word} and a long multi word string`;
+          injected.push(element);
+        } else if (!hasSlotInside) {
+          findings.push(
+            `no text to replace in ${element.tagName.toLowerCase()} "${element.className}"`,
+          );
+        }
       }
-      const findings = [];
-      for (const element of elements) {
+      for (const element of injected) {
         const box = element.getBoundingClientRect();
         const card =
           element.parentElement.closest("li, article, dl > div, section > div") ??
@@ -326,14 +338,14 @@ async function checkLongText(browser, viewport, label) {
       const isPageScrollingSideways = document.documentElement.scrollWidth > window.innerWidth;
       if (isPageScrollingSideways)
         findings.push(`page ${document.documentElement.scrollWidth}px > ${window.innerWidth}px`);
-      return { findings, slotCount: elements.length };
+      return { findings, injectedCount: injected.length, matchedCount: elements.length };
     },
     { slots: LONG_TEXT_SLOTS, word: LONG_WORD },
   );
   record(
     `${label} long text stays inside its container`,
     overflows.findings.length === 0,
-    `${overflows.findings.length}/${overflows.slotCount} slots overflow${overflows.findings.length ? `: ${[...new Set(overflows.findings)].join(", ")}` : ""}`,
+    `${overflows.injectedCount}/${overflows.matchedCount} slots filled, ${overflows.findings.length} findings${overflows.findings.length ? `: ${[...new Set(overflows.findings)].join(", ")}` : ""}`,
   );
   await context.close();
 }
