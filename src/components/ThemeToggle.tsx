@@ -2,7 +2,9 @@
 
 import { Moon, Sun } from "lucide-react";
 import { useSyncExternalStore } from "react";
-import { applyTheme } from "@/lib/theme";
+import { focusRingClasses } from "@/components/ui/classes";
+import { cn } from "@/lib/cn";
+import { applyTheme, ThemeEnum } from "@/lib/theme";
 
 function subscribe(onChange: () => void) {
   const observer = new MutationObserver(onChange);
@@ -10,20 +12,31 @@ function subscribe(onChange: () => void) {
   return () => observer.disconnect();
 }
 
-const isDarkNow = () => document.documentElement.classList.contains("dark");
+function readIsDark() {
+  const isDark = document.documentElement.classList.contains("dark");
+
+  return isDark;
+}
 
 export function ThemeToggle() {
-  const dark = useSyncExternalStore(subscribe, isDarkNow, () => true);
+  const isDark = useSyncExternalStore(subscribe, readIsDark, () => true);
+
+  function handleToggleTheme() {
+    applyTheme(isDark ? ThemeEnum.Light : ThemeEnum.Dark);
+  }
 
   return (
     <button
       type="button"
-      onClick={() => applyTheme(dark ? "light" : "dark")}
-      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
-      title={dark ? "Light mode" : "Dark mode"}
-      className="text-ink-muted hover:text-accent focus-visible:outline-accent grid size-12 place-items-center rounded-full transition focus-visible:outline-2"
+      onClick={handleToggleTheme}
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      title={isDark ? "Light mode" : "Dark mode"}
+      className={cn(
+        "text-ink-muted hover:text-accent grid size-12 place-items-center rounded-full transition",
+        focusRingClasses,
+      )}
     >
-      {dark ? <Sun className="size-5" aria-hidden /> : <Moon className="size-5" aria-hidden />}
+      {isDark ? <Sun className="size-5" aria-hidden /> : <Moon className="size-5" aria-hidden />}
     </button>
   );
 }

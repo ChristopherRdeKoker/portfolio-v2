@@ -1,13 +1,19 @@
 import Image from "next/image";
 import { ChevronDown, Mail } from "lucide-react";
 import { GithubIcon } from "@/components/GithubIcon";
-import { intro, person } from "@/content/profile";
+import { pageContainerClasses } from "@/components/ui/classes";
+import { LinkButton, LinkButtonVariantEnum } from "@/components/ui/LinkButton";
+import { intro, person } from "@/content/person";
+import { cn } from "@/lib/cn";
 
 export function Hero() {
   return (
     <header
       id="home"
-      className="relative mx-auto grid min-h-svh max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 md:grid-cols-[2fr_3fr] md:gap-16 md:pr-24 md:pb-28"
+      className={cn(
+        pageContainerClasses,
+        "relative grid min-h-svh items-center gap-10 py-16 md:grid-cols-[2fr_3fr] md:gap-16 md:pb-28",
+      )}
     >
       <div className="relative mx-auto w-56 sm:w-64 md:w-full md:max-w-sm">
         <div aria-hidden className="bg-accent/80 absolute -inset-3 -z-10 rotate-3 rounded-3xl" />
@@ -28,22 +34,23 @@ export function Hero() {
         <p className="mx-auto mt-6 max-w-xl leading-relaxed md:mx-0">{intro}</p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
-          <a
+          <LinkButton
             href={person.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-accent focus-visible:outline-accent inline-flex items-center gap-2 rounded-full px-6 py-3 font-medium text-white shadow transition hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2"
+            isExternal
+            variant={LinkButtonVariantEnum.Primary}
+            className="px-6 py-3"
           >
             <GithubIcon className="size-5" />
             GitHub
-          </a>
-          <a
+          </LinkButton>
+          <LinkButton
             href={`mailto:${person.email}`}
-            className="border-line bg-surface-raised hover:border-accent hover:text-accent focus-visible:outline-accent inline-flex items-center gap-2 rounded-full border px-6 py-3 font-medium transition focus-visible:outline-2 focus-visible:outline-offset-2"
+            variant={LinkButtonVariantEnum.Secondary}
+            className="px-6 py-3"
           >
             <Mail className="size-5" aria-hidden />
             Email me
-          </a>
+          </LinkButton>
         </div>
       </div>
 

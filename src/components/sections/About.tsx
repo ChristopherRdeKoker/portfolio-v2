@@ -1,9 +1,12 @@
 import { Section } from "@/components/Section";
-import { about, skills, stats } from "@/content/profile";
+import { ChipList, ChipSizeEnum } from "@/components/ui/ChipList";
+import { cardClasses } from "@/components/ui/classes";
+import { about, skills, stats } from "@/content/about";
+import { cn } from "@/lib/cn";
 
 export function About() {
   return (
-    <Section id="about" title="About" highlight="me" backdrop="my stats" tinted>
+    <Section id="about" title="About" highlight="me" backdrop="my stats" isTinted>
       <div className="grid gap-12 lg:grid-cols-2">
         <div className="space-y-4 leading-relaxed">
           {about.map((paragraph) => (
@@ -13,10 +16,7 @@ export function About() {
 
         <dl className="grid grid-cols-2 gap-4">
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="border-line bg-surface-raised flex flex-col rounded-2xl border p-5 shadow-sm"
-            >
+            <div key={stat.label} className={cn(cardClasses, "flex flex-col p-5")}>
               <dt className="text-ink-muted text-sm">{stat.label}</dt>
               <dd className="text-accent order-first text-3xl font-bold md:text-4xl">
                 {stat.value}
@@ -30,16 +30,10 @@ export function About() {
         Skills
       </h3>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-        {skills.map((group) => (
-          <div key={group.label}>
-            <p className="mb-2 font-semibold">{group.label}</p>
-            <ul className="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <li key={item} className="bg-accent-soft text-ink rounded-full px-3 py-1 text-sm">
-                  {item}
-                </li>
-              ))}
-            </ul>
+        {skills.map((skillGroup) => (
+          <div key={skillGroup.label}>
+            <p className="mb-2 font-semibold">{skillGroup.label}</p>
+            <ChipList items={skillGroup.items} size={ChipSizeEnum.Medium} />
           </div>
         ))}
       </div>

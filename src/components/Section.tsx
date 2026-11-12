@@ -1,23 +1,27 @@
 import type { ReactNode } from "react";
-import type { SectionId } from "@/content/profile";
+import { pageContainerClasses } from "@/components/ui/classes";
+import type { SectionIdType } from "@/content/navigation";
+import { cn } from "@/lib/cn";
 
 type SectionProps = {
-  id: SectionId;
+  id: SectionIdType;
   title: string;
   highlight: string;
   backdrop: string;
-  tinted?: boolean;
+  isTinted?: boolean;
   children: ReactNode;
 };
 
-export function Section({ id, title, highlight, backdrop, tinted, children }: SectionProps) {
+export function Section({ id, title, highlight, backdrop, isTinted, children }: SectionProps) {
+  const headingId = `${id}-title`;
+
   return (
     <section
       id={id}
-      aria-labelledby={`${id}-title`}
-      className={`py-20 md:py-28 ${tinted ? "bg-band border-line/60 border-y" : ""}`}
+      aria-labelledby={headingId}
+      className={cn("py-20 md:py-28", isTinted && "border-line/60 bg-band border-y")}
     >
-      <div className="mx-auto max-w-6xl px-5 sm:px-8 md:pr-24">
+      <div className={pageContainerClasses}>
         <div className="relative mb-12 overflow-hidden py-4 text-center">
           <span
             aria-hidden
@@ -25,7 +29,7 @@ export function Section({ id, title, highlight, backdrop, tinted, children }: Se
           >
             {backdrop}
           </span>
-          <h2 id={`${id}-title`} className="relative text-3xl font-bold md:text-4xl">
+          <h2 id={headingId} className="relative text-3xl font-bold md:text-4xl">
             {title} <span className="text-accent">{highlight}</span>
           </h2>
         </div>

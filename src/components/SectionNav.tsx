@@ -3,9 +3,11 @@
 import { Award, Briefcase, FolderGit2, Home, Mail, User, type LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { navItems, type SectionId } from "@/content/profile";
+import { focusRingClasses } from "@/components/ui/classes";
+import { navItems, type SectionIdType } from "@/content/navigation";
+import { cn } from "@/lib/cn";
 
-const icons: Record<SectionId, LucideIcon> = {
+const navIcons: Record<SectionIdType, LucideIcon> = {
   home: Home,
   about: User,
   achievements: Award,
@@ -15,13 +17,13 @@ const icons: Record<SectionId, LucideIcon> = {
 };
 
 export function SectionNav() {
-  const [active, setActive] = useState<SectionId>("home");
+  const [active, setActive] = useState<SectionIdType>("home");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) setActive(visible.target.id as SectionId);
+        if (visible) setActive(visible.target.id as SectionIdType);
       },
       { rootMargin: "-45% 0px -50% 0px" },
     );
@@ -42,7 +44,7 @@ export function SectionNav() {
           <ThemeToggle />
         </li>
         {navItems.map(({ id, label }) => {
-          const Icon = icons[id];
+          const Icon = navIcons[id];
           const isActive = active === id;
           return (
             <li key={id}>
@@ -51,9 +53,11 @@ export function SectionNav() {
                 aria-label={label}
                 aria-current={isActive ? "true" : undefined}
                 title={label}
-                className={`focus-visible:outline-accent grid size-12 place-items-center rounded-full transition focus-visible:outline-2 ${
-                  isActive ? "bg-accent text-white" : "text-ink-muted hover:text-accent"
-                }`}
+                className={cn(
+                  "grid size-12 place-items-center rounded-full transition",
+                  focusRingClasses,
+                  isActive ? "bg-accent text-white" : "text-ink-muted hover:text-accent",
+                )}
               >
                 <Icon className="size-5" aria-hidden />
               </a>

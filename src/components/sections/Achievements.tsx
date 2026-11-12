@@ -1,6 +1,8 @@
 import { CheckCircle2 } from "lucide-react";
 import { Section } from "@/components/Section";
-import { achievements } from "@/content/profile";
+import { cardClasses } from "@/components/ui/classes";
+import { achievements } from "@/content/achievements";
+import { cn } from "@/lib/cn";
 
 export function Achievements() {
   return (
@@ -9,7 +11,7 @@ export function Achievements() {
         {achievements.map((achievement) => (
           <li
             key={achievement.title}
-            className="border-line bg-surface-raised hover:border-accent flex gap-4 rounded-2xl border p-5 shadow-sm transition"
+            className={cn(cardClasses, "hover:border-accent flex gap-4 p-5 transition")}
           >
             <CheckCircle2 className="text-accent mt-0.5 size-6 shrink-0" aria-hidden />
             <div>

@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
-import { person } from "@/content/profile";
+import { person } from "@/content/person";
+import { site } from "@/content/site";
 import { themeInitScript } from "@/lib/theme";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portfolio.ccloud.co.za"),
+  metadataBase: new URL(site.url),
   title: `${person.name} · ${person.role}`,
-  description:
-    "Full-stack developer working in TypeScript, React/Next.js and PostgreSQL. Experience, recent achievements and projects.",
+  description: site.description,
   openGraph: {
     title: person.name,
     description: person.role,
@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#191d2b" },
+    { media: "(prefers-color-scheme: light)", color: site.themeColors.light },
+    { media: "(prefers-color-scheme: dark)", color: site.themeColors.dark },
   ],
 };
 
