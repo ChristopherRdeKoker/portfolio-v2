@@ -12,6 +12,14 @@ export type Achievement = { title: string; detail: string };
 
 export type SkillGroup = { label: string; items: string[] };
 
+export type Project = {
+  name: string;
+  description: string;
+  image: string;
+  href: string;
+  stack: string[];
+};
+
 export const person = {
   name: "Christopher de Koker",
   role: "Intermediate Full-Stack Software Developer",
@@ -144,6 +152,17 @@ export const timeline: TimelineEntry[] = [
     title: "Bachelor of Social Sciences, General & Industrial Psychology",
     organisation: "University of KwaZulu-Natal (Howard College)",
     summary: "Member of the Golden Key International Honour Society.",
+  },
+];
+
+export const projects: Project[] = [
+  {
+    name: "Retirement calculator",
+    description:
+      "See how long your savings last, in rand and in today's money. Save and compare up to three scenarios. Everything stays in your browser.",
+    image: "/images/projects/retirement-calculator.webp",
+    href: "/apps/retirement/",
+    stack: ["Rust", "WebAssembly", "Leptos", "SVG chart", "localStorage", "Unit-tested maths"],
   },
 ];
 

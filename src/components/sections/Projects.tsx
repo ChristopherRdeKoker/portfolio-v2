@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/GithubIcon";
 import { Section } from "@/components/Section";
-import { person } from "@/content/profile";
+import { person, projects } from "@/content/profile";
 
 const repoUrl = `${person.githubUrl}/portfolio-v2`;
 const stack = ["Next.js 16", "TypeScript", "Tailwind CSS v4", "Static export", "nginx", "CSP"];
@@ -50,6 +50,41 @@ export function Projects() {
       </article>
 
       <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project) => (
+          <li
+            key={project.name}
+            className="group border-line bg-surface-raised hover:border-accent flex flex-col overflow-hidden rounded-2xl border shadow-sm transition"
+          >
+            <a
+              href={project.href}
+              className="focus-visible:outline-accent flex h-full flex-col focus-visible:outline-2"
+            >
+              <div className="bg-surface aspect-[16/10] overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={`Screenshot of the ${project.name.toLowerCase()}`}
+                  width={1200}
+                  height={750}
+                  className="size-full object-cover object-top transition duration-500 group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h4 className="flex items-center justify-between font-semibold">
+                  {project.name}
+                  <ExternalLink className="text-ink-muted size-4" aria-hidden />
+                </h4>
+                <p className="text-ink-muted mt-1 text-sm leading-relaxed">{project.description}</p>
+                <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Built with">
+                  {project.stack.map((item) => (
+                    <li key={item} className="bg-accent-soft rounded-full px-2.5 py-0.5 text-xs">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </a>
+          </li>
+        ))}
         <li className="group border-line hover:border-accent rounded-2xl border border-dashed transition">
           <a
             href={person.githubUrl}

@@ -43,8 +43,20 @@ if (files.length === 0) {
   process.exit(1);
 }
 
+const APPS_DIR = path.join(OUT_DIR, "apps") + path.sep;
+
 for (const file of files) {
   const html = await readFile(file, "utf8");
+  if (file.startsWith(APPS_DIR)) {
+    if (!html.includes('http-equiv="Content-Security-Policy"')) {
+      console.error(
+        `add-csp: ${file} is a bundled app without its own CSP tag - refusing to publish it`,
+      );
+      process.exit(1);
+    }
+    console.log(`add-csp: ${file} - bundled app, keeps its own CSP`);
+    continue;
+  }
   if (html.includes('http-equiv="Content-Security-Policy"')) {
     console.error(`add-csp: ${file} already has a CSP tag - refusing to add a second one`);
     process.exit(1);
