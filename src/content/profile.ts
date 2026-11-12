@@ -172,6 +172,14 @@ export const projects: Project[] = [
     href: "/apps/expenses/",
     stack: ["C#", ".NET 10", "Blazor WebAssembly", "SVG chart", "localStorage", "xUnit"],
   },
+  {
+    name: "Holiday home booking",
+    description:
+      "A demo booking site for imaginary South African holiday homes: search and filter, an availability calendar, a price breakdown with VAT and your bookings. All artwork is drawn in code.",
+    image: "/images/projects/holiday-booking.webp",
+    href: "/apps/stays/",
+    stack: ["TypeScript", "React", "Vite", "Zod", "React Hook Form", "Vitest"],
+  },
 ];
 
 export const navItems = [
