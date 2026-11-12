@@ -48,6 +48,28 @@ const EXTERNAL_LINKS = [
   { name: "See more on GitHub", href: "https://github.com/ChristopherRdeKoker" },
 ];
 
+const LONG_WORD = "Pneumonoultramicroscopicsilicovolcanoconiosis";
+const LONG_TEXT_SLOTS = [
+  "#home h1",
+  "#home h1 + p",
+  "#home h1 ~ p",
+  "#about h2",
+  "#about p",
+  "#about dt",
+  "#about dd",
+  "#about li",
+  "#achievements h3",
+  "#achievements p",
+  "#experience p",
+  "#experience h3",
+  "#projects h3",
+  "#projects h4",
+  "#projects p",
+  "#projects li li",
+  "#contact > div > p",
+  "#contact li p",
+];
+
 const args = process.argv.slice(2);
 const shotsFlagIndex = args.indexOf("--shots");
 const shotsDir = shotsFlagIndex === -1 ? null : path.resolve(args[shotsFlagIndex + 1] ?? "");
@@ -268,6 +290,54 @@ async function checkApps(context, label) {
   }
 }
 
+async function checkLongText(browser, viewport, label) {
+  const context = await browser.newContext({ viewport, reducedMotion: "reduce" });
+  const page = await context.newPage();
+  await page.goto(BASE_URL);
+  await settlePage(page);
+  const overflows = await page.evaluate(
+    ({ slots, word }) => {
+      const matches = new Set(slots.flatMap((slot) => [...document.querySelectorAll(slot)]));
+      const elements = [...matches].filter((element) => !element.closest("[aria-hidden]"));
+      for (const element of elements) {
+        const textNode = [...element.childNodes].find(
+          (node) => node.nodeType === Node.TEXT_NODE && node.textContent.trim(),
+        );
+        if (textNode) textNode.textContent = `${word} ${word} and a long multi word string`;
+      }
+      const findings = [];
+      for (const element of elements) {
+        const box = element.getBoundingClientRect();
+        const card =
+          element.parentElement.closest("li, article, dl > div, section > div") ??
+          element.closest("[id]");
+        const container = element.closest("section > div, header");
+        const cardBox = card.getBoundingClientRect();
+        const containerBox = container.getBoundingClientRect();
+        const isOutside = (inner, outer) =>
+          inner.right > outer.right + 1 || inner.left < outer.left - 1;
+        const isOverflowingSelf = element.scrollWidth > element.clientWidth + 1;
+        const isOverflowingCard = isOutside(box, cardBox) || isOutside(cardBox, containerBox);
+        if (isOverflowingSelf || isOverflowingCard)
+          findings.push(
+            `${element.tagName.toLowerCase()} "${element.className}" in #${element.closest("section, header").id}`,
+          );
+      }
+      const isPageScrollingSideways = document.documentElement.scrollWidth > window.innerWidth;
+      if (isPageScrollingSideways)
+        findings.push(`page ${document.documentElement.scrollWidth}px > ${window.innerWidth}px`);
+      return { findings, slotCount: elements.length };
+    },
+    { slots: LONG_TEXT_SLOTS, word: LONG_WORD },
+  );
+  record(
+    `${label} long text stays inside its container`,
+    overflows.findings.length === 0,
+    `${overflows.findings.length}/${overflows.slotCount} slots overflow${overflows.findings.length ? `: ${[...new Set(overflows.findings)].join(", ")}` : ""}`,
+  );
+  await context.close();
+}
+
 async function takeScreenshot(browser, viewport, colorScheme) {
   const context = await browser.newContext({ viewport, colorScheme, reducedMotion: "reduce" });
   const page = await context.newPage();
@@ -307,6 +377,15 @@ try {
       }
       await context.close();
     }
+  }
+  for (const viewport of VIEWPORTS) {
+    await runStep(`[${viewport.name}] long text`, () =>
+      checkLongText(
+        browser,
+        { width: viewport.width, height: viewport.height },
+        `[${viewport.name}]`,
+      ),
+    );
   }
   if (shotsDir) {
     await mkdir(shotsDir, { recursive: true });

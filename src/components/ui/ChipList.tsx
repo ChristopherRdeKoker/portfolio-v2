@@ -26,7 +26,10 @@ export function ChipList({ items, size, label, className }: ChipListProps) {
   return (
     <ul aria-label={label} className={cn("flex flex-wrap", listClasses[size], className)}>
       {items.map((item) => (
-        <li key={item} className={cn("bg-accent-soft rounded-full", chipClasses[size])}>
+        <li
+          key={item}
+          className={cn("bg-accent-soft min-w-0 rounded-full break-words", chipClasses[size])}
+        >
           {item}
         </li>
       ))}

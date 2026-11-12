@@ -15,7 +15,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     <li
       className={cn(
         cardClasses,
-        "group hover:border-accent flex flex-col overflow-hidden transition",
+        "group hover:border-accent flex min-w-0 flex-col overflow-hidden transition",
       )}
     >
       <a href={project.href} className={cn("flex h-full flex-col", focusRingClasses)}>
@@ -26,10 +26,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         />
         <div className="flex flex-1 flex-col p-5">
           <h4 className="flex items-center justify-between font-semibold">
-            {project.name}
-            <ExternalLinkIcon className="text-ink-muted size-4" aria-hidden />
+            <span className="min-w-0 break-words">{project.name}</span>
+            <ExternalLinkIcon className="text-ink-muted size-4 shrink-0" aria-hidden />
           </h4>
-          <p className="text-ink-muted mt-1 text-sm leading-relaxed">{project.description}</p>
+          <p className="text-ink-muted mt-1 text-sm leading-relaxed break-words">
+            {project.description}
+          </p>
           <ProjectStack stack={project.stack} size={ChipSizeEnum.Small} className="mt-4" />
         </div>
       </a>

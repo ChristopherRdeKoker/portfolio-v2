@@ -12,7 +12,7 @@ export function Hero() {
       id="home"
       className={cn(
         pageContainerClasses,
-        "relative grid min-h-svh items-center gap-10 py-16 md:grid-cols-[2fr_3fr] md:gap-16 md:pb-28",
+        "relative grid min-h-svh items-center gap-10 py-16 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-16 md:pb-28",
       )}
     >
       <div className="relative mx-auto w-56 sm:w-64 md:w-full md:max-w-sm">
@@ -27,11 +27,15 @@ export function Hero() {
         />
       </div>
 
-      <div className="text-center md:text-left">
+      <div className="min-w-0 text-center md:text-left">
         <p className="text-accent mb-2 font-medium tracking-wide">Hi, I&apos;m</p>
-        <h1 className="text-4xl font-bold text-balance sm:text-5xl lg:text-6xl">{person.name}</h1>
-        <p className="text-ink-muted mt-3 text-lg font-medium sm:text-xl">{person.role}</p>
-        <p className="mx-auto mt-6 max-w-xl leading-relaxed md:mx-0">{intro}</p>
+        <h1 className="text-4xl font-bold text-balance break-words sm:text-5xl lg:text-6xl">
+          {person.name}
+        </h1>
+        <p className="text-ink-muted mt-3 text-lg font-medium break-words sm:text-xl">
+          {person.role}
+        </p>
+        <p className="mx-auto mt-6 max-w-xl leading-relaxed break-words md:mx-0">{intro}</p>
 
         <div className="mt-8 flex flex-wrap justify-center gap-4 md:justify-start">
           <LinkButton
@@ -58,7 +62,7 @@ export function Hero() {
         href="#about"
         className="text-ink-muted hover:text-accent absolute inset-x-0 bottom-6 mx-auto hidden w-fit flex-col items-center gap-1 text-sm transition md:flex"
       >
-        <span>Scroll down or use the shortcuts on the right</span>
+        <p>Scroll down or use the shortcuts on the right</p>
         <ChevronDown className="size-5 motion-safe:animate-bounce" aria-hidden />
       </a>
     </header>

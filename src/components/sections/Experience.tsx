@@ -22,12 +22,16 @@ export function Experience() {
               <span className="bg-accent absolute top-0 -left-[3.05rem] grid size-10 place-items-center rounded-full text-white shadow">
                 <Icon className="size-5" aria-hidden />
               </span>
-              <p className="bg-accent-soft inline-block rounded-full px-3 py-0.5 text-xs font-medium">
+              <p className="bg-accent-soft inline-block max-w-full rounded-full px-3 py-0.5 text-xs font-medium break-words">
                 {timelineEntry.period}
               </p>
-              <h3 className="mt-2 text-lg font-semibold">{timelineEntry.title}</h3>
-              <p className="text-accent text-sm font-medium">{timelineEntry.organisation}</p>
-              <p className="text-ink-muted mt-2 leading-relaxed">{timelineEntry.summary}</p>
+              <h3 className="mt-2 text-lg font-semibold break-words">{timelineEntry.title}</h3>
+              <p className="text-accent text-sm font-medium break-words">
+                {timelineEntry.organisation}
+              </p>
+              <p className="text-ink-muted mt-2 leading-relaxed break-words">
+                {timelineEntry.summary}
+              </p>
             </li>
           );
         })}

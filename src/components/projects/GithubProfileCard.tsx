@@ -6,7 +6,7 @@ import { cn } from "@/lib/cn";
 
 export function GithubProfileCard() {
   return (
-    <li className="group border-line hover:border-accent rounded-2xl border border-dashed transition">
+    <li className="group border-line hover:border-accent min-w-0 rounded-2xl border border-dashed transition">
       <ExternalLink
         href={person.githubUrl}
         className={cn(
@@ -15,8 +15,8 @@ export function GithubProfileCard() {
         )}
       >
         <GithubIcon className="text-ink-muted group-hover:text-accent size-10 transition" />
-        <span className="font-semibold">See more on GitHub</span>
-        <span className="text-ink-muted text-sm">{person.githubHandle}</span>
+        <p className="w-full font-semibold break-words">See more on GitHub</p>
+        <p className="text-ink-muted w-full text-sm break-words">{person.githubHandle}</p>
         <span className="sr-only">(opens in a new tab)</span>
       </ExternalLink>
     </li>

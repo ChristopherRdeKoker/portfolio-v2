@@ -8,17 +8,17 @@ export function About() {
   return (
     <Section id="about" title="About" highlight="me" backdrop="my stats" isTinted>
       <div className="grid gap-12 lg:grid-cols-2">
-        <div className="space-y-4 leading-relaxed">
+        <div className="min-w-0 space-y-4 leading-relaxed break-words">
           {about.map((paragraph) => (
             <p key={paragraph.slice(0, 32)}>{paragraph}</p>
           ))}
         </div>
 
-        <dl className="grid grid-cols-2 gap-4">
+        <dl className="grid min-w-0 grid-cols-2 gap-4">
           {stats.map((stat) => (
-            <div key={stat.label} className={cn(cardClasses, "flex flex-col p-5")}>
-              <dt className="text-ink-muted text-sm">{stat.label}</dt>
-              <dd className="text-accent order-first text-3xl font-bold md:text-4xl">
+            <div key={stat.label} className={cn(cardClasses, "flex min-w-0 flex-col p-5")}>
+              <dt className="text-ink-muted text-sm break-words">{stat.label}</dt>
+              <dd className="text-accent order-first text-3xl font-bold break-words md:text-4xl">
                 {stat.value}
               </dd>
             </div>
@@ -31,8 +31,8 @@ export function About() {
       </h3>
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {skills.map((skillGroup) => (
-          <div key={skillGroup.label}>
-            <p className="mb-2 font-semibold">{skillGroup.label}</p>
+          <div key={skillGroup.label} className="min-w-0">
+            <p className="mb-2 font-semibold break-words">{skillGroup.label}</p>
             <ChipList items={skillGroup.items} size={ChipSizeEnum.Medium} />
           </div>
         ))}

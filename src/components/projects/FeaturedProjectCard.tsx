@@ -19,10 +19,12 @@ export function FeaturedProjectCard({ project }: FeaturedProjectCardProps) {
         className="bg-band lg:aspect-auto"
         imageClassName="object-left-top"
       />
-      <div className="p-6 md:p-8">
-        <p className="text-accent text-sm font-semibold tracking-wide uppercase">Latest project</p>
-        <h3 className="mt-1 text-2xl font-semibold">{project.name}</h3>
-        <p className="text-ink-muted mt-3 leading-relaxed">{project.description}</p>
+      <div className="min-w-0 p-6 md:p-8">
+        <p className="text-accent text-sm font-semibold tracking-wide break-words uppercase">
+          Latest project
+        </p>
+        <h3 className="mt-1 text-2xl font-semibold break-words">{project.name}</h3>
+        <p className="text-ink-muted mt-3 leading-relaxed break-words">{project.description}</p>
         <ProjectStack stack={project.stack} size={ChipSizeEnum.Medium} className="mt-5" />
         <LinkButton
           href={project.href}

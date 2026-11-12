@@ -28,7 +28,7 @@ function ContactCardBody({ icon: Icon, label, value }: ContactItemType) {
   return (
     <>
       <Icon className="text-accent mx-auto size-7" />
-      <p className="text-ink-muted mt-3 text-sm">{label}</p>
+      <p className="text-ink-muted mt-3 text-sm break-words">{label}</p>
       <p className="mt-1 text-sm font-medium [overflow-wrap:anywhere]">{value}</p>
     </>
   );
@@ -37,22 +37,22 @@ function ContactCardBody({ icon: Icon, label, value }: ContactItemType) {
 export function Contact() {
   return (
     <Section id="contact" title="Contact" highlight="me" backdrop="say hello" isTinted>
-      <p className="mx-auto mb-10 max-w-xl text-center leading-relaxed">
+      <p className="mx-auto mb-10 max-w-xl text-center leading-relaxed break-words">
         You&apos;ve made it this far! If you&apos;d like to work together or have a question, email
         is the best way to reach me.
       </p>
       <ul className="mx-auto grid max-w-4xl gap-4 lg:grid-cols-3">
-        <li>
+        <li className="min-w-0">
           <a href={`mailto:${person.email}`} className={contactLinkClasses}>
             <ContactCardBody {...email} />
           </a>
         </li>
-        <li>
+        <li className="min-w-0">
           <ExternalLink href={person.githubUrl} className={contactLinkClasses}>
             <ContactCardBody {...github} />
           </ExternalLink>
         </li>
-        <li>
+        <li className="min-w-0">
           <div className={contactCardClasses}>
             <ContactCardBody {...location} />
           </div>
