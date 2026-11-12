@@ -1,10 +1,10 @@
 "use client";
 
 import { Award, Briefcase, FolderGit2, Home, Mail, User, type LucideIcon } from "lucide-react";
-import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { focusRingClasses } from "@/components/ui/classes";
 import { navItems, type SectionIdType } from "@/content/navigation";
+import { useActiveSectionId } from "@/lib/activeSection";
 import { cn } from "@/lib/cn";
 
 const navIcons: Record<SectionIdType, LucideIcon> = {
@@ -17,22 +17,7 @@ const navIcons: Record<SectionIdType, LucideIcon> = {
 };
 
 export function SectionNav() {
-  const [active, setActive] = useState<SectionIdType>("home");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((entry) => entry.isIntersecting);
-        if (visible) setActive(visible.target.id as SectionIdType);
-      },
-      { rootMargin: "-45% 0px -50% 0px" },
-    );
-    for (const { id } of navItems) {
-      const section = document.getElementById(id);
-      if (section) observer.observe(section);
-    }
-    return () => observer.disconnect();
-  }, []);
+  const activeSectionId = useActiveSectionId();
 
   return (
     <nav
@@ -45,7 +30,7 @@ export function SectionNav() {
         </li>
         {navItems.map(({ id, label }) => {
           const Icon = navIcons[id];
-          const isActive = active === id;
+          const isActive = activeSectionId === id;
           return (
             <li key={id}>
               <a
