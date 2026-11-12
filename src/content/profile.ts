@@ -12,13 +12,6 @@ export type Achievement = { title: string; detail: string };
 
 export type SkillGroup = { label: string; items: string[] };
 
-export type StarterProject = {
-  name: string;
-  description: string;
-  image: string;
-  demoUrl: string;
-};
-
 export const person = {
   name: "Christopher de Koker",
   role: "Intermediate Full-Stack Software Developer",
@@ -151,39 +144,6 @@ export const timeline: TimelineEntry[] = [
     title: "Bachelor of Social Sciences, General & Industrial Psychology",
     organisation: "University of KwaZulu-Natal (Howard College)",
     summary: "Member of the Golden Key International Honour Society.",
-  },
-];
-
-export const starterProjects: StarterProject[] = [
-  {
-    name: "Forkify",
-    description: "Recipe search app with bookmarks and recipe uploads (MVC, API calls).",
-    image: "/images/projects/forkify.webp",
-    demoUrl: "https://forkify-cdk.netlify.app/",
-  },
-  {
-    name: "Mapty",
-    description: "Workout logger on a map using geolocation and Leaflet.",
-    image: "/images/projects/mapty.webp",
-    demoUrl: "https://mapty-cdk.netlify.app/",
-  },
-  {
-    name: "Bankist app",
-    description: "Banking dashboard with login, transfers, loans and sorting.",
-    image: "/images/projects/bankist.webp",
-    demoUrl: "https://cdk-bankist.netlify.app/",
-  },
-  {
-    name: "Bankist landing page",
-    description: "Marketing page with lazy loading, sticky navigation and a slider.",
-    image: "/images/projects/bankist-landing.webp",
-    demoUrl: "https://cdk-webpagedesign.netlify.app/",
-  },
-  {
-    name: "Analogue clock",
-    description: "A small responsive clock built with plain JavaScript and CSS.",
-    image: "/images/projects/clock.webp",
-    demoUrl: "https://cdk-basic-functional-clock.netlify.app/",
   },
 ];
 
