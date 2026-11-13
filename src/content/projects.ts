@@ -69,4 +69,17 @@ export const projects: ProjectType[] = [
       height: 750,
     },
   },
+  {
+    name: "Beauty salon booking",
+    description:
+      "A demo booking site for an imaginary beauty studio in Durban North: a price list, a therapist and a free time from the diary, a price breakdown with VAT and your appointments. All artwork is drawn in code.",
+    href: "/apps/salon/",
+    stack: ["TypeScript", "React", "Vite", "Zod", "React Hook Form", "Vitest", "Playwright"],
+    image: {
+      src: "/images/projects/beauty-salon.webp",
+      alt: "Screenshot of the beauty salon booking",
+      width: 1200,
+      height: 750,
+    },
+  },
 ];

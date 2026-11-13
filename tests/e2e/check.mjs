@@ -29,7 +29,7 @@ const EXPECTED_COUNTS = [
   { label: "achievements", selector: "#achievements ul > li", count: 8 },
   { label: "timeline entries", selector: "#experience ol > li", count: 7 },
   { label: "featured project", selector: "#projects article", count: 1 },
-  { label: "project grid cards", selector: "#projects ul.grid > li", count: 4 },
+  { label: "project grid cards", selector: "#projects ul.grid > li", count: 5 },
   { label: "contact items", selector: "#contact ul > li", count: 3 },
 ];
 
@@ -41,6 +41,11 @@ const APPS = [
   },
   { href: "/apps/expenses/", name: "Expense tracker", renderedText: "Start fresh" },
   { href: "/apps/stays/", name: "Holiday home booking", renderedText: "Find your stoep." },
+  {
+    href: "/apps/salon/",
+    name: "Beauty salon booking",
+    renderedText: "Nails, lashes and skin, done without rushing.",
+  },
 ];
 
 const EXTERNAL_LINKS = [
