@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-ZA">
 <head>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
     <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)" />
@@ -10,8 +10,9 @@
     <meta name="description" content="A fast, private monthly expense tracker with budgets per category. Built with C# and Blazor WebAssembly; data stays in your browser." />
     <title>Expenses · Budget tracker</title>
     <link rel="icon" href="icon.svg" type="image/svg+xml" />
-    <link href="_framework/dotnet.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-6F/tr3Yj8uunEplHzRCSBYjW7tnRDvqnRvH6R5gOisg=" />
+    <link href="_framework/dotnet.js" rel="preload" as="script" fetchpriority="high" crossorigin="anonymous" integrity="sha256-Ux8zscWwwHuvaZ6uKZhB0seWkxNC2bl2qaWzfRJXAkg=" />
     <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="ExpenseTracker.styles.css" />
 </head>
 <body>
     <div id="app">
