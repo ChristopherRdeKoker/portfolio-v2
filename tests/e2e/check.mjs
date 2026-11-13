@@ -44,7 +44,7 @@ const APPS = [
   {
     href: "/apps/salon/",
     name: "Beauty salon booking",
-    cardMentions: "Honeycomb",
+    cardMentions: "Honeyvale",
     renderedText: "Nails, lashes and skin, done without rushing.",
   },
 ];
