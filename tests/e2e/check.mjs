@@ -44,6 +44,7 @@ const APPS = [
   {
     href: "/apps/salon/",
     name: "Beauty salon booking",
+    cardMentions: "Honeycomb",
     renderedText: "Nails, lashes and skin, done without rushing.",
   },
 ];
@@ -262,6 +263,8 @@ async function checkApps(context, label) {
     const card = page.locator(`#projects a[href="${app.href}"]`);
     const cardCount = await card.count();
     const cardText = cardCount ? await card.first().textContent() : "";
+    const isCardWorded =
+      cardText.includes(app.name) && cardText.includes(app.cardMentions ?? app.name);
     appErrors.length = 0;
     let status = 0;
     let isRendered = false;
@@ -285,7 +288,7 @@ async function checkApps(context, label) {
     record(
       `${label} card "${app.name}" opens ${app.href}`,
       cardCount === 1 &&
-        cardText.includes(app.name) &&
+        isCardWorded &&
         status === 200 &&
         pathname === app.href &&
         isRendered &&
